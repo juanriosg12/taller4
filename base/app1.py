@@ -21,18 +21,18 @@ server = app.server
 # en este primer ejemplo usamos unos datos de prueba que creamos directamente
 # en un dataframe de pandas 
 df = pd.DataFrame({
-    "Fiebre": ["Moderada", "Leve", "Alta", "Moderada", "Leve", "Alta"],
-    "Casos": [4, 1, 2, 2, 4, 5],
-    "Diagnóstico": ["Positivo", "Positivo", "Positivo", "Negativo", "Negativo", "Negativo"]
+    "Tipo de persona": ["Gallo", "Gallo", "Normal", "Normal", "Buho", "Buho"],
+    "Numero de personas": [6, 7, 8, 9, 4, 3],
+    "Tipo de colchon": ["Fuerte", "Suave", "Fuerte", "Suave", "Fuerte", "Suave"]
 })
 
-fig = px.bar(df, x="Fiebre", y="Casos", color="Diagnóstico", barmode="group")
+fig = px.bar(df, x="Tipo de persona", y="Numero de personas", color="Tipo de colchon", barmode="group")
 
 app.layout = html.Div(children=[
-    html.H1(children='Mi primer tablero en Dash'),
+    html.H1(children='Mi primer tablero en Dash Modificado'),
 
     html.Div(children='''
-        Histograma de casos según síntomas y diagnóstico
+        Histograma de casos según tipo de persona y tipo de colchon
     '''),
 
     dcc.Graph(
@@ -40,7 +40,7 @@ app.layout = html.Div(children=[
         figure=fig
     ),
     html.Div(children='''
-        En este gráfico se observa el número de casos positivos y negativos para COVID-19 según síntomas de fiebre.
+        En este gráfico se observa el numero de personas que prefieren un colchon fuerte o sauve dependiendo de la cantidad de horas que duermen
     '''),
     html.Div(
         className="Columnas",
